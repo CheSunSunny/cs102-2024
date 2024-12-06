@@ -123,7 +123,12 @@ def find_possible_values(grid: tp.List[tp.List[str]], pos: tp.Tuple[int, int]) -
     >>> values == {'2', '5', '9'}
     True
     """
-    pass
+    all_values = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
+    impossible_values = set()
+    impossible_values.update(get_row(grid, pos))
+    impossible_values.update(get_col(grid, pos))
+    impossible_values.update(get_block(grid, pos))
+    return all_values.difference(impossible_values)
 
 
 def solve(grid: tp.List[tp.List[str]]) -> tp.Optional[tp.List[tp.List[str]]]:
