@@ -78,8 +78,12 @@ def get_exits(grid: List[List[Union[str, int]]]) -> List[Tuple[int, int]]:
     :param grid:
     :return:
     """
-
-    pass
+    exits = []
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] == "X":
+                exits.append((i, j))
+    return exits
 
 
 def make_step(grid: List[List[Union[str, int]]], k: int) -> List[List[Union[str, int]]]:
@@ -89,8 +93,9 @@ def make_step(grid: List[List[Union[str, int]]], k: int) -> List[List[Union[str,
     :param k:
     :return:
     """
-
-    pass
+    if len(get_exits(grid)) == 1:
+        return grid  # как вернуть координаты выхода? как вернуть путь?
+    
 
 
 def shortest_path(
