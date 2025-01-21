@@ -18,7 +18,7 @@ def remove_wall(
     :param coord:
     :return:
     """
-    grid[coord[0]][coord[1]] = ''
+    grid[coord[0]][coord[1]] = " "
     return grid
 
 
@@ -93,9 +93,7 @@ def make_step(grid: List[List[Union[str, int]]], k: int) -> List[List[Union[str,
     :param k:
     :return:
     """
-    if len(get_exits(grid)) == 1:
-        return grid  # как вернуть координаты выхода? как вернуть путь?
-    
+
 
 
 def shortest_path(
@@ -117,8 +115,33 @@ def encircled_exit(grid: List[List[Union[str, int]]], coord: Tuple[int, int]) ->
     :param coord:
     :return:
     """
+    left_up_corner = coord == (0, 0)
+    right_up_corner = coord == (0, len(grid[0]) - 1)
+    left_down_corner = coord == (len(grid) - 1, 0)
+    right_down_corner = coord == (len(grid) - 1, len(grid[0]) - 1)
 
-    pass
+    left_side = (0 <= coord[0] <= len(grid) - 1) and coord[1] == 0
+    right_side = (0 <= coord[0] <= len(grid) - 1) and coord[1] == len(grid[0]) - 1
+    up_side = coord[0] == 0 and (0 <= coord[1] <= len(grid[0]) - 1)
+    down_side = coord[0] == len(grid) - 1 and (0 <= coord[1] <= len(grid[0]) - 1)
+
+    if left_up_corner or right_up_corner or left_down_corner or right_down_corner:
+        return True
+    elif left_side:
+        if grid[coord[0]][coord[1] + 1] == "■":
+            return True
+    elif right_side:
+        if grid[coord[0]][coord[1] - 1] == "■":
+            return True
+    elif up_side:
+        if grid[coord[0] + 1][coord[1]] == "■":
+            return True
+    elif down_side:
+        if grid[coord[0] - 1][coord[1]] == "■":
+            return True
+    else:
+        return False
+
 
 
 def solve_maze(
@@ -129,6 +152,14 @@ def solve_maze(
     :param grid:
     :return:
     """
+    if len(get_exits(grid)) == 1:
+        return grid, get_exits(grid)[0]  # как вернуть координаты выхода? как вернуть путь?
+    else:
+        if encircled_exit(grid, get_exits(grid)[0]) or encircled_exit(grid, get_exits(grid)[1]):  # какой выход мы должны проверять, оба?
+            return grid, None
+        else:
+            path = []
+
 
     pass
 
