@@ -13,7 +13,7 @@ class MazeTest(unittest.TestCase):
             ["■", " ", "■", " ", "■"],
             ["■", "■", "■", "■", "■"],
         ]
-        coord_1 = (1, 1)
+        coord_1 = (1, 2)
         self.assertEqual(
             [
                 ["■", "■", "■", "■", "■"],
@@ -35,7 +35,7 @@ class MazeTest(unittest.TestCase):
             ["■", " ", "■", " ", "■", " ", "■"],
             ["■", "■", "■", "■", "■", "■", "■"],
         ]
-        coord_2 = (5, 1)
+        coord_2 = (5, 2)
         self.assertEqual(
             [
                 ["■", "■", "■", "■", "■", "■", "■"],
@@ -59,7 +59,7 @@ class MazeTest(unittest.TestCase):
             ["■", " ", " ", " ", " ", " ", "■"],
             ["■", "■", "■", "■", "■", "■", "■"],
         ]
-        coord_4 = (5, 5)
+        coord_4 = (4, 5)
         self.assertEqual(
             [
                 ["■", "■", "■", "■", "■", "■", "■"],
