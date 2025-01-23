@@ -109,7 +109,28 @@ def shortest_path(
     :param exit_coord:
     :return:
     """
-    pass
+    curr_coord = exit_coord
+    k = grid[exit_coord[0]][exit_coord[1]]
+    path_len = grid[exit_coord[0]][exit_coord[1]]
+    coords = [(x, y) for x, row in enumerate(grid) for y, cell in enumerate(row)]
+    path = [curr_coord]
+
+    while grid[curr_coord[0]][curr_coord[1]] != 1:
+        near = [(curr_coord[0] + 1, curr_coord[1]),
+                (curr_coord[0] - 1, curr_coord[1]),
+                (curr_coord[0], curr_coord[1] + 1),
+                (curr_coord[0], curr_coord[1] - 1)]
+        for cell in near:
+            if (cell[0], cell[1]) in coords and grid[cell[0]][cell[1]] == k - 1:
+                path.append((cell[0], cell[1]))
+                curr_coord = (cell[0], cell[1])
+                k -= 1
+                break
+    if len(path) != path_len:
+        grid[curr_coord[0]][curr_coord[1]] = " "
+        shortest_path(grid, exit_coord)
+
+    return path
 
 
 def encircled_exit(grid: List[List[Union[str, int]]], coord: Tuple[int, int]) -> bool:
@@ -145,7 +166,6 @@ def encircled_exit(grid: List[List[Union[str, int]]], coord: Tuple[int, int]) ->
             return True
     else:
         return False
-
 
 
 def solve_maze(
