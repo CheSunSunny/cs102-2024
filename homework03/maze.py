@@ -90,7 +90,14 @@ def make_step(grid: List[List[Union[str, int]]], k: int) -> List[List[Union[str,
     :param k:
     :return:
     """
-
+    for x, row in enumerate(grid):
+        for y, cell in enumerate(grid[x]):
+            if cell == k:
+                for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                    step_x, step_y = x + dx, y + dy
+                    if (0 <= step_x < len(grid) and 0 <= step_y < len(grid[0])) and grid[step_x][step_y] == 0:
+                        grid[step_x][step_y] = k + 1
+    return grid
 
 
 def shortest_path(
