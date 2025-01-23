@@ -157,15 +157,23 @@ def solve_maze(
     :return:
     """
     if len(get_exits(grid)) == 1:
-        return grid, get_exits(grid)[0]  # как вернуть координаты выхода? как вернуть путь?
-    else:
-        if encircled_exit(grid, get_exits(grid)[0]) or encircled_exit(grid, get_exits(grid)[1]):  # какой выход мы должны проверять, оба?
-            return grid, None
-        else:
-            path = []
+        return grid, get_exits(grid)[0]
+    start, end = get_exits(grid)
 
+    if encircled_exit(grid, start) or encircled_exit(grid, end):
+        return grid, None
 
-    pass
+    grid[start[0]][start[1]] = 1
+    for x, row in enumerate(grid):
+        for y, cell in enumerate(row):
+            if cell in [" ", "X"]:
+                grid[x][y] = 0
+    k = 0
+    while grid[end[0]][end[1]] == 0:
+        k += 1
+        make_step(grid, k)
+
+    return grid, shortest_path(grid, end)
 
 
 def add_path_to_grid(
