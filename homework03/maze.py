@@ -18,16 +18,17 @@ def remove_wall(
     :param coord:
     :return:
     """
-    directions = []
-    if coord[0] > 1:
-        directions.append((-1, 0))
-    if coord[1] < len(grid[0]) - 2:
-        directions.append((0, 1))
-    try:
-        move = choice(directions)
-        grid[coord[0] + move[0]][coord[1] + move[1]] = " "
-    except IndexError:
-        pass
+    x, y = coord
+    directions = ["up", "right"]
+    direction = choice(directions)
+    if direction == "up" and coord[0] - 2 > 0:
+        grid[coord[0] - 1][coord[1]] = " "
+    else:
+        direction = "right"
+    if direction == "right" and coord[1] + 2 < len(grid[0]):
+        grid[coord[0]][coord[1] + 1] = " "
+    elif direction == "right" and coord[0] - 2 > 0:
+        grid[coord[0] - 1][coord[1]] = " "
     return grid
 
 
@@ -50,17 +51,9 @@ def bin_tree_maze(
                 grid[x][y] = " "
                 empty_cells.append((x, y))
 
-    for cell in empty_cells:
-        directions = []
-        if cell[0] > 1:
-            directions.append((-1, 0))
-        if cell[1] < cols - 2:
-            directions.append((0, 1))
-        try:
-            move = choice(directions)
-            remove_wall(grid, (cell[0] + move[0], cell[1] + move[1]))
-        except IndexError:
-            continue
+    while empty_cells:
+        x, y = empty_cells.pop(0)
+        grid = remove_wall(grid, (x, y))
 
     # генерация входа и выхода
     if random_exit:
