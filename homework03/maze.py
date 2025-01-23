@@ -1,4 +1,3 @@
-from copy import deepcopy
 from random import choice, randint
 from typing import List, Optional, Tuple, Union
 
@@ -59,7 +58,9 @@ def bin_tree_maze(
     if random_exit:
         x_in, x_out = randint(0, rows - 1), randint(0, rows - 1)
         y_in = randint(0, cols - 1) if x_in in (0, rows - 1) else choice((0, cols - 1))
-        y_out = randint(0, cols - 1) if x_out in (0, rows - 1) else choice((0, cols - 1))
+        y_out = (
+            randint(0, cols - 1) if x_out in (0, rows - 1) else choice((0, cols - 1))
+        )
     else:
         x_in, y_in = 0, cols - 2
         x_out, y_out = rows - 1, 1
@@ -95,7 +96,9 @@ def make_step(grid: List[List[Union[str, int]]], k: int) -> List[List[Union[str,
             if cell == k:
                 for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                     step_x, step_y = x + dx, y + dy
-                    if (0 <= step_x < len(grid) and 0 <= step_y < len(grid[0])) and grid[step_x][step_y] == 0:
+                    if (
+                        0 <= step_x < len(grid) and 0 <= step_y < len(grid[0])
+                    ) and grid[step_x][step_y] == 0:
                         grid[step_x][step_y] = k + 1
     return grid
 
@@ -110,16 +113,18 @@ def shortest_path(
     :return:
     """
     curr_coord = exit_coord
-    k = grid[exit_coord[0]][exit_coord[1]]
+    k = int(grid[exit_coord[0]][exit_coord[1]])
     path_len = grid[exit_coord[0]][exit_coord[1]]
     coords = [(x, y) for x, row in enumerate(grid) for y, cell in enumerate(row)]
     path = [curr_coord]
 
     while grid[curr_coord[0]][curr_coord[1]] != 1:
-        near = [(curr_coord[0] + 1, curr_coord[1]),
-                (curr_coord[0] - 1, curr_coord[1]),
-                (curr_coord[0], curr_coord[1] + 1),
-                (curr_coord[0], curr_coord[1] - 1)]
+        near = [
+            (curr_coord[0] + 1, curr_coord[1]),
+            (curr_coord[0] - 1, curr_coord[1]),
+            (curr_coord[0], curr_coord[1] + 1),
+            (curr_coord[0], curr_coord[1] - 1),
+        ]
         for cell in near:
             if (cell[0], cell[1]) in coords and grid[cell[0]][cell[1]] == k - 1:
                 path.append((cell[0], cell[1]))
@@ -164,13 +169,14 @@ def encircled_exit(grid: List[List[Union[str, int]]], coord: Tuple[int, int]) ->
     elif down_side:
         if grid[coord[0] - 1][coord[1]] == "■":
             return True
-    else:
-        return False
+    return False
 
 
 def solve_maze(
     grid: List[List[Union[str, int]]],
-) -> Tuple[List[List[Union[str, int]]], Optional[Union[Tuple[int, int], List[Tuple[int, int]]]]]:
+) -> Tuple[
+    List[List[Union[str, int]]], Optional[Union[Tuple[int, int], List[Tuple[int, int]]]]
+]:
     """
 
     :param grid:
@@ -197,7 +203,8 @@ def solve_maze(
 
 
 def add_path_to_grid(
-    grid: List[List[Union[str, int]]], path: Optional[Union[Tuple[int, int], List[Tuple[int, int]]]]
+    grid: List[List[Union[str, int]]],
+    path: Optional[Union[Tuple[int, int], List[Tuple[int, int]]]],
 ) -> List[List[Union[str, int]]]:
     """
 
