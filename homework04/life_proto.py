@@ -33,14 +33,18 @@ class GameOfLife:
         self.grid = self.create_grid(randomize=True)
 
     def draw_lines(self) -> None:
-        """ Отрисовать сетку """
+        """Отрисовать сетку"""
         for x in range(0, self.width, self.cell_size):
-            pygame.draw.line(self.screen, pygame.Color("black"), (x, 0), (x, self.height))
+            pygame.draw.line(
+                self.screen, pygame.Color("black"), (x, 0), (x, self.height)
+            )
         for y in range(0, self.height, self.cell_size):
-            pygame.draw.line(self.screen, pygame.Color("black"), (0, y), (self.width, y))
+            pygame.draw.line(
+                self.screen, pygame.Color("black"), (0, y), (self.width, y)
+            )
 
     def run(self) -> None:
-        """ Запустить игру """
+        """Запустить игру"""
         pygame.init()
         clock = pygame.time.Clock()
         pygame.display.set_caption("Game of Life")
@@ -96,15 +100,17 @@ class GameOfLife:
         for i, row in enumerate(self.grid):
             for j, cell in enumerate(row):
                 if cell == 1:
-                    color = 'green'
+                    color = "green"
                 if cell == 0:
-                    color = 'white'
-                pygame.draw.rect(self.screen,
-                                 pygame.Color(color),
-                                 i * self.cell_size,
-                                 j * self.cell_size,
-                                 self.cell_size,
-                                 self.cell_size)
+                    color = "white"
+                pygame.draw.rect(
+                    self.screen,
+                    pygame.Color(color),
+                    i * self.cell_size,
+                    j * self.cell_size,
+                    self.cell_size,
+                    self.cell_size,
+                )
 
     def get_neighbours(self, cell: Cell) -> Cells:
         """
@@ -127,7 +133,11 @@ class GameOfLife:
         row, col = cell
         up_left, up, up_right = (row - 1, col - 1), (row - 1, col), (row - 1, col + 1)
         left, right = (row, col - 1), (row, col + 1)
-        down_left, down, down_right = (row + 1, col - 1), (row + 1, col), (row + 1, col + 1)
+        down_left, down, down_right = (
+            (row + 1, col - 1),
+            (row + 1, col),
+            (row + 1, col + 1),
+        )
         neighbours = [up_left, up, up_right, left, right, down_left, down, down_right]
         neighbour_values = []
         for x, y in neighbours:
