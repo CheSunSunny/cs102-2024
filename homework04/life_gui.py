@@ -81,13 +81,13 @@ class GUI(UI):
             self.draw_lines()
             if not paused:
                 self.life.step()
-                clock.tick(self.speed)
+            clock.tick(self.speed)
             pygame.display.flip()
 
         pygame.quit()
 
 
 if __name__ == "__main__":
-    game_of_life = GameOfLife(size=(50, 90), randomize=True, max_generations=10)
+    game_of_life = GameOfLife(size=(50, 50), randomize=True, max_generations=10)
     ui = GUI(game_of_life, cell_size=15, speed=10)
     ui.run()

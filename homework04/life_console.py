@@ -10,8 +10,8 @@ class Console(UI):
 
     def draw_borders(self, screen) -> None:
         """Отобразить рамку."""
-        screen.addstr(0, 0, "o" + "-" * self.life.cols + "o")
-        screen.addstr(self.life.rows + 1, 0, "o" + "-" * self.life.cols + "o")
+        screen.addstr(0, 0, "--" * self.life.cols + "-")
+        screen.addstr(self.life.rows + 1, 0, "--" * self.life.cols + "-")
 
         for i in range(1, self.life.rows + 1):
             screen.addstr(i, 0, "|")
@@ -22,7 +22,7 @@ class Console(UI):
         for row in range(self.life.rows):
             for col in range(self.life.cols):
                 if self.life.curr_generation[row][col] == 1:
-                    screen.addch(row + 1, col + 1, "@")
+                    screen.addch(row + 1, col + 1, "#")
                 else:
                     screen.addch(row + 1, col + 1, " ")
 
