@@ -29,16 +29,39 @@ class GameOfLife:
         self.generations = 1
 
     def create_grid(self, randomize: bool = False) -> Grid:
-        # Copy from previous assignment
-        pass
+        if randomize:
+            grid = [[random.randint(0, 1) for _ in range(self.cols)] for _ in range(self.rows)]
+        else:
+            grid = [[0 for _ in range(self.cols)] for _ in range(self.rows)]
+
+        return grid
 
     def get_neighbours(self, cell: Cell) -> Cells:
-        # Copy from previous assignment
-        pass
+        row, col = cell
+        up_left, up, up_right = (row - 1, col - 1), (row - 1, col), (row - 1, col + 1)
+        left, right = (row, col - 1), (row, col + 1)
+        down_left, down, down_right = (row + 1, col - 1), (row + 1, col), (row + 1, col + 1)
+        neighbours = [up_left, up, up_right, left, right, down_left, down, down_right]
+        neighbour_values = []
+        for x, y in neighbours:
+            if 0 <= x < len(self.curr_generation) and 0 <= y < len(self.curr_generation[0]):
+                neighbour_values.append(self.curr_generation[x][y])
+        return neighbour_values
 
     def get_next_generation(self) -> Grid:
-        # Copy from previous assignment
-        pass
+        next_generation = [[0] * self.cols for _ in range(self.rows)]
+        for i in range(self.rows):
+            for j in range(self.cols):
+                sum_neighbours = sum(self.get_neighbours((i, j)))
+                if self.curr_generation[i][j] == 1:
+                    if sum_neighbours == 2 or sum_neighbours == 3:
+                        next_generation[i][j] = 1
+                    else:
+                        next_generation[i][j] = 0
+                else:
+                    if sum_neighbours == 3:
+                        next_generation[i][j] = 1
+        return next_generation
 
     def step(self) -> None:
         """

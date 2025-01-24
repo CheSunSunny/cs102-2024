@@ -46,9 +46,6 @@ class GameOfLife:
         pygame.display.set_caption("Game of Life")
         self.screen.fill(pygame.Color("white"))
 
-        # Создание списка клеток
-        # PUT YOUR CODE HERE
-
         running = True
         while running:
             for event in pygame.event.get():
@@ -59,7 +56,7 @@ class GameOfLife:
             # Отрисовка списка клеток
             self.draw_grid()
             # Выполнение одного шага игры (обновление состояния ячеек)
-            # PUT YOUR CODE HERE
+            self.grid = self.get_next_generation()
 
             pygame.display.flip()
             clock.tick(self.speed)
