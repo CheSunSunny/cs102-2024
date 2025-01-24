@@ -147,4 +147,16 @@ class GameOfLife:
         out : Grid
             Новое поколение клеток.
         """
-        pass
+        next_generation = self.create_grid()
+        for i, row in enumerate(next_generation):
+            for j, _ in enumerate(row):
+                sum_neighbours = sum(self.get_neighbours((i, j)))
+                if self.grid[i][j] == 1:
+                    if sum_neighbours == 2 or sum_neighbours == 3:
+                        next_generation[i][j] = 1
+                    else:
+                        next_generation[i][j] = 0
+                else:
+                    if sum_neighbours == 3:
+                        next_generation[i][j] = 1
+        return next_generation
