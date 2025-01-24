@@ -127,10 +127,16 @@ class GameOfLife:
         out : Cells
             Список соседних клеток.
         """
-        self.grid
-        neighbours = []
-        x, y = cell
-        for i in
+        row, col = cell
+        up_left, up, up_right = (row - 1, col - 1), (row - 1, col), (row - 1, col + 1)
+        left, right = (row, col - 1), (row, col + 1)
+        down_left, down, down_right = (row + 1, col - 1), (row + 1, col), (row + 1, col + 1)
+        neighbours = [up_left, up, up_right, left, right, down_left, down, down_right]
+        neighbour_values = []
+        for x, y in neighbours:
+            if 0 <= x < len(self.grid) and 0 <= y < len(self.grid[0]):
+                neighbour_values.append(self.grid[x][y])
+        return neighbour_values
 
     def get_next_generation(self) -> Grid:
         """
