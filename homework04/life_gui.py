@@ -1,6 +1,6 @@
 import pygame
+
 from life import GameOfLife
-from pygame.locals import *
 from ui import UI
 
 
@@ -19,16 +19,12 @@ class GUI(UI):
 
     def draw_lines(self) -> None:
         for x in range(0, self.width, self.cell_size):
-            pygame.draw.line(
-                self.screen, pygame.Color("black"), (x, 0), (x, self.height)
-            )
+            pygame.draw.line(self.screen, pygame.Color("black"), (x, 0), (x, self.height))
         for y in range(0, self.height, self.cell_size):
-            pygame.draw.line(
-                self.screen, pygame.Color("black"), (0, y), (self.width, y)
-            )
+            pygame.draw.line(self.screen, pygame.Color("black"), (0, y), (self.width, y))
 
     def draw_grid(self) -> None:
-        color = 0
+        color = ""
         for i, row in enumerate(self.grid):
             for j, cell in enumerate(row):
                 if cell == 1:
@@ -38,12 +34,7 @@ class GUI(UI):
                 pygame.draw.rect(
                     self.screen,
                     pygame.Color(color),
-                    [
-                        i * self.cell_size,
-                        j * self.cell_size,
-                        self.cell_size,
-                        self.cell_size,
-                    ],
+                    [i * self.cell_size, j * self.cell_size, self.cell_size, self.cell_size],
                 )
 
     def run(self) -> None:
@@ -65,24 +56,24 @@ class GUI(UI):
                     if event.key == pygame.K_RETURN:
                         paused = False
 
-            # click = pygame.mouse.get_pressed()
-            # if click != (0, 0, 0) and paused:
-            #     mouse_pos = pygame.mouse.get_pos()
-            #     x, y = mouse_pos[0] // self.cell_size, mouse_pos[1] // self.cell_size
-            #     if self.grid[y][x] == 1:
-            #         self.grid[y][x] = 0
-            #     else:
-            #         self.grid[y][x] = 1
+            click = pygame.mouse.get_pressed()
+            if click != (0, 0, 0) and paused:
+                mouse_pos = pygame.mouse.get_pos()
+                x, y = mouse_pos[1] // self.cell_size, mouse_pos[0] // self.cell_size
+                if self.grid[y][x] == 1:
+                    self.grid[y][x] = 0
+                else:
+                    self.grid[y][x] = 1
 
-            # if self.life.is_max_generations_exceeded or not self.life.is_changing:
-            #     running = False
+            if self.life.is_max_generations_exceeded or not self.life.is_changing:
+                running = False
 
+            self.grid = self.life.curr_generation
             self.draw_grid()
             self.draw_lines()
-            # if not paused:
-            #     self.life.step()
+            if not paused:
+                self.life.step()
             pygame.display.flip()
-            self.life.step()
             clock.tick(self.speed)
 
         pygame.quit()
