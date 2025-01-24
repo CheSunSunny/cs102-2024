@@ -29,6 +29,9 @@ class GameOfLife:
         # Скорость протекания игры
         self.speed = speed
 
+        # Начальное поле игры
+        self.grid = self.create_grid(randomize=True)
+
     def draw_lines(self) -> None:
         """ Отрисовать сетку """
         for x in range(0, self.width, self.cell_size):
@@ -54,6 +57,7 @@ class GameOfLife:
             self.draw_lines()
 
             # Отрисовка списка клеток
+            self.draw_grid()
             # Выполнение одного шага игры (обновление состояния ячеек)
             # PUT YOUR CODE HERE
 
@@ -82,7 +86,7 @@ class GameOfLife:
         rows = self.cell_height
         cols = self.cell_width
         if randomize:
-            grid = [[random.randint(0, 2) for _ in range(cols)] for _ in range(rows)]
+            grid = [[random.randint(0, 1) for _ in range(cols)] for _ in range(rows)]
         else:
             grid = [[0 for _ in range(cols)] for _ in range(rows)]
 
@@ -92,7 +96,18 @@ class GameOfLife:
         """
         Отрисовка списка клеток с закрашиванием их в соответствующе цвета.
         """
-        pass
+        for i, row in enumerate(self.grid):
+            for j, cell in enumerate(row):
+                if cell == 1:
+                    color = 'green'
+                if cell == 0:
+                    color = 'white'
+                pygame.draw.rect(self.screen,
+                                 pygame.Color(color),
+                                 i * self.cell_width,
+                                 j * self.cell_height,
+                                 self.cell_width,
+                                 self.cell_height)
 
     def get_neighbours(self, cell: Cell) -> Cells:
         """
