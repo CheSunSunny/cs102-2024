@@ -41,20 +41,6 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="Python tests for test_life.TestGameOfLife" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="homework04" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_life.TestGameOfLife&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests for test_life.TestGameOfLife.test_is_changing" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="homework04" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,7 +99,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_life.TestGameOfLife" />
         <item itemvalue="Python tests.Python tests for test_life.TestGameOfLife.test_is_not_changing" />
         <item itemvalue="Python tests.Python tests for test_life.TestGameOfLife.test_is_changing" />
         <item itemvalue="Python tests.Python tests for test_life.TestGameOfLife.test_is_max_generations_exceeded" />
