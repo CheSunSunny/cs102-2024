@@ -104,10 +104,10 @@ class GameOfLife:
                     color = 'white'
                 pygame.draw.rect(self.screen,
                                  pygame.Color(color),
-                                 i * self.cell_width,
-                                 j * self.cell_height,
-                                 self.cell_width,
-                                 self.cell_height)
+                                 i * self.cell_size,
+                                 j * self.cell_size,
+                                 self.cell_size,
+                                 self.cell_size)
 
     def get_neighbours(self, cell: Cell) -> Cells:
         """
@@ -127,7 +127,10 @@ class GameOfLife:
         out : Cells
             Список соседних клеток.
         """
-        pass
+        self.grid
+        neighbours = []
+        x, y = cell
+        for i in
 
     def get_next_generation(self) -> Grid:
         """
