@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d388f71d-3b1a-4bba-8bcd-79103507d683" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/sudoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_sudoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_sudoku.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../homework03/maze_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/../homework03/maze_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../homework03/test_maze.py" beforeDir="false" afterPath="$PROJECT_DIR$/../homework03/test_maze.py" afterDir="false" />
-    </list>
+    <list default="true" id="29e0222a-4c61-4108-9b7d-7e72a9f329c5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="homework02" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
@@ -26,33 +26,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "homework02",
-    "last_opened_file_path": "C:/Users/Администратор/PycharmProjects/StudyProjects/cs102-2024/homework04"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;homework02&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Администратор/PycharmProjects/StudyProjects/cs102-2024/homework04&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="Doctest find_possible_values" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
-      <module name="homework02" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sudoku.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="find_possible_values" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_FUNCTION" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
+}</component>
+  <component name="RunManager" selected="Python tests.Python tests for test_sudoku.SudokuTestCase">
     <configuration name="Python tests for test_sudoku.SudokuTestCase" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="homework02" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -112,7 +94,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for test_sudoku.SudokuTestCase" />
-        <item itemvalue="Python tests.Doctest find_possible_values" />
         <item itemvalue="Python tests.Python tests for test_sudoku.SudokuTestCase.test_generate_sudoku" />
         <item itemvalue="Python tests.Python tests for test_sudoku.SudokuTestCase.test_check_solution" />
         <item itemvalue="Python tests.Python tests for test_sudoku.SudokuTestCase.test_solve" />
